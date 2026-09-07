@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday, Pinkey Didi! 👑✨</title>
+    <title>Happy Birthday Pinkey Didi</title>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.0/dist/confetti.browser.min.js"></script>
     <style>
         * {
@@ -12,18 +12,13 @@
             box-sizing: border-box;
         }
 
-        html, body {
-            height: 100%;
-        }
-
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Arial', sans-serif;
             background: linear-gradient(135deg, #ffd6e8 0%, #c2b3f3 50%, #f0e6ff 100%);
+            min-height: 100vh;
             overflow-x: hidden;
-            position: relative;
         }
 
-        /* Animated floating elements background */
         .floating-container {
             position: fixed;
             top: 0;
@@ -31,7 +26,7 @@
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: 1;
+            z-index: 0;
         }
 
         .floating-element {
@@ -43,61 +38,33 @@
 
         @keyframes float {
             0% {
-                transform: translateY(100vh) translateX(0) rotate(0deg);
+                transform: translateY(100vh) rotate(0deg);
                 opacity: 0.3;
             }
-            50% {
-                opacity: 0.7;
-            }
             100% {
-                transform: translateY(-100vh) translateX(50px) rotate(360deg);
+                transform: translateY(-100vh) rotate(360deg);
                 opacity: 0;
             }
         }
 
-        .floating-heart {
-            animation: floatHeart 6s infinite ease-in-out;
-        }
-
-        @keyframes floatHeart {
-            0% {
-                transform: translateY(100vh) translateX(0) scale(1);
-                opacity: 0.3;
-            }
-            50% {
-                opacity: 0.8;
-                transform: translateY(50vh) translateX(30px) scale(1.1);
-            }
-            100% {
-                transform: translateY(-100vh) translateX(0) scale(0.8);
-                opacity: 0;
-            }
-        }
-
-        /* Scrollable wrapper */
-        .page-wrapper {
+        .content-wrapper {
             position: relative;
-            z-index: 10;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            padding: 2rem 0;
-        }
-
-        /* Main container sections */
-        .container {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(10px);
-            border-radius: 30px;
-            padding: 3rem;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            z-index: 1;
+            padding: 20px;
             max-width: 900px;
-            width: 90%;
-            margin: 2rem auto;
-            animation: slideIn 0.8s ease-out;
+            margin: 0 auto;
         }
 
-        @keyframes slideIn {
+        .section {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 20px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            animation: slideUp 0.6s ease;
+        }
+
+        @keyframes slideUp {
             from {
                 opacity: 0;
                 transform: translateY(30px);
@@ -108,100 +75,70 @@
             }
         }
 
-        /* Title Section */
-        .title {
+        h1 {
             text-align: center;
-            margin-bottom: 2rem;
-            animation: titleBounce 0.8s ease-out 0.2s both;
-        }
-
-        @keyframes titleBounce {
-            from {
-                opacity: 0;
-                transform: scale(0.8) translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1) translateY(0);
-            }
-        }
-
-        .title h1 {
-            font-size: clamp(2rem, 8vw, 3.5rem);
             background: linear-gradient(135deg, #ff6b9d 0%, #c44569 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
-            font-weight: 800;
-            letter-spacing: 1px;
-            margin-bottom: 0.5rem;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
         }
 
-        .title p {
-            font-size: 1.2rem;
-            color: #666;
-            font-weight: 300;
-        }
-
-        /* Wish Card */
-        .wish-card {
-            background: linear-gradient(135deg, #fff5e6 0%, #ffe6f0 100%);
-            border-radius: 20px;
-            padding: 2rem;
-            margin: 2rem 0;
-            border: 2px solid rgba(255, 107, 157, 0.2);
-            box-shadow: inset 0 4px 15px rgba(0, 0, 0, 0.05);
-            animation: cardFadeIn 0.8s ease-out 0.4s both;
-        }
-
-        @keyframes cardFadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .wish-card p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #333;
-            text-align: center;
-            font-weight: 500;
-        }
-
-        /* Photo/Card Section */
-        .photo-section {
-            margin: 2rem 0;
-            text-align: center;
-            animation: photoFadeIn 0.8s ease-out 0.6s both;
-        }
-
-        @keyframes photoFadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .photo-section h3 {
+        h2 {
             color: #ff6b9d;
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        .wish-text {
+            text-align: center;
+            color: #333;
+            font-size: 1rem;
+            line-height: 1.8;
+            margin: 20px 0;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+
+        button {
+            background: linear-gradient(135deg, #ff6b9d 0%, #c44569 100%);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 157, 0.3);
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 107, 157, 0.5);
+        }
+
+        button:active {
+            transform: translateY(-1px);
         }
 
         .flip-card {
-            background-color: transparent;
-            width: 250px;
-            height: 250px;
-            margin: 0 auto;
+            width: 200px;
+            height: 200px;
+            margin: 20px auto;
             perspective: 1000px;
             cursor: pointer;
         }
@@ -225,157 +162,48 @@
             height: 100%;
             -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
-            border-radius: 20px;
+            border-radius: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: bold;
-            font-size: 3rem;
+            font-size: 4rem;
         }
 
         .flip-card-front {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
         }
 
         .flip-card-back {
             background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            color: white;
             transform: rotateY(180deg);
-            box-shadow: 0 8px 20px rgba(245, 87, 108, 0.4);
         }
 
-        /* Music Player Section */
-        .music-section {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            border-radius: 20px;
-            padding: 1.5rem;
-            margin: 2rem 0;
-            text-align: center;
-            animation: musicFadeIn 0.8s ease-out 0.8s both;
-        }
-
-        @keyframes musicFadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .music-section h3 {
-            color: #333;
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-        }
-
-        .music-controls {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        /* Party Popper Styles */
-        .party-popper-section {
-            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
-            border-radius: 20px;
-            padding: 2rem;
-            margin: 2rem 0;
-            text-align: center;
-            animation: partyFadeIn 0.8s ease-out 1s both;
-        }
-
-        @keyframes partyFadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .party-popper-section h3 {
-            color: #c44569;
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-        }
-
-        /* Fun Facts Section */
         .fun-facts {
+            display: grid;
+            gap: 10px;
+        }
+
+        .fact-item {
             background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
-            border-radius: 20px;
-            padding: 2rem;
-            margin: 2rem 0;
-            animation: factsFadeIn 0.8s ease-out 1.2s both;
-        }
-
-        @keyframes factsFadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .fun-facts h3 {
-            color: #2c3e50;
-            margin-bottom: 1rem;
-            text-align: center;
-            font-size: 1.3rem;
-        }
-
-        .fun-fact-item {
-            background: rgba(255, 255, 255, 0.6);
-            padding: 1rem;
-            margin: 0.5rem 0;
-            border-radius: 15px;
-            text-align: center;
-            font-weight: 500;
-            color: #333;
+            padding: 15px;
+            border-radius: 10px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: transform 0.3s ease;
+            text-align: center;
+            color: #333;
         }
 
-        .fun-fact-item:hover {
-            background: rgba(255, 255, 255, 0.9);
+        .fact-item:hover {
             transform: translateX(5px);
         }
 
-        /* Game Section */
-        .game-section {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            border-radius: 20px;
-            padding: 2rem;
-            margin: 2rem 0;
+        .countdown-timer {
             text-align: center;
-            color: white;
-            animation: gameFadeIn 0.8s ease-out 1.4s both;
-        }
-
-        @keyframes gameFadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .game-section h3 {
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
+            font-size: 2rem;
+            font-weight: bold;
+            color: #c44569;
+            font-family: 'Courier New', monospace;
+            margin: 20px 0;
         }
 
         .memory-game {
@@ -383,173 +211,60 @@
             grid-template-columns: repeat(4, 1fr);
             gap: 10px;
             max-width: 300px;
-            margin: 1rem auto;
+            margin: 20px auto;
         }
 
         .game-card {
-            background: rgba(255, 255, 255, 0.2);
-            border: 2px solid white;
-            border-radius: 10px;
             width: 60px;
             height: 60px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            border: 2px solid white;
+            border-radius: 10px;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
+            font-size: 1.5rem;
             transition: all 0.3s ease;
+            color: white;
+            font-weight: bold;
         }
 
         .game-card:hover {
-            background: rgba(255, 255, 255, 0.4);
             transform: scale(1.1);
         }
 
         .game-card.matched {
-            background: rgba(0, 255, 0, 0.3);
+            background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
         }
 
-        /* Countdown Section */
-        .countdown-section {
-            background: linear-gradient(135deg, #ffd89b 0%, #19547b 100%);
-            border-radius: 20px;
-            padding: 2rem;
-            margin: 2rem 0;
-            text-align: center;
-            color: white;
-            animation: countdownFadeIn 0.8s ease-out 1.6s both;
+        .messages-box {
+            display: grid;
+            gap: 10px;
         }
 
-        @keyframes countdownFadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .countdown-section h3 {
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-        }
-
-        .countdown-display {
-            font-size: 2rem;
-            font-weight: bold;
-            font-family: 'Courier New', monospace;
-        }
-
-        /* Button Styles */
-        button {
-            background: linear-gradient(135deg, #ff6b9d 0%, #c44569 100%);
-            color: white;
-            border: none;
-            padding: 0.75rem 1.5rem;
-            border-radius: 25px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(255, 107, 157, 0.3);
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(255, 107, 157, 0.4);
-        }
-
-        button:active {
-            transform: translateY(-1px);
-        }
-
-        .celebrate-btn {
-            background: linear-gradient(135deg, #ff6b9d 0%, #ff1493 100%);
-            font-size: 1.2rem;
-            padding: 1rem 2rem;
-            margin: 1rem 0;
-        }
-
-        .celebrate-btn:hover {
-            box-shadow: 0 8px 25px rgba(255, 107, 157, 0.5);
-        }
-
-        .status-text {
-            font-size: 0.9rem;
-            color: #666;
-            margin-top: 0.5rem;
-        }
-
-        /* Messages Section */
-        .messages-section {
+        .message {
             background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
-            border-radius: 20px;
-            padding: 2rem;
-            margin: 2rem 0;
-            text-align: center;
-            animation: messageFadeIn 0.8s ease-out 1.8s both;
-        }
-
-        @keyframes messageFadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .messages-section h3 {
-            color: #2c3e50;
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-        }
-
-        .message-item {
-            background: rgba(255, 255, 255, 0.7);
-            padding: 1rem;
-            margin: 0.5rem 0;
+            padding: 15px;
             border-radius: 10px;
             border-left: 4px solid #ff6b9d;
-            text-align: left;
             color: #333;
         }
 
-        /* Responsive Design */
+        .status-text {
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+
         @media (max-width: 768px) {
-            .container {
-                padding: 2rem;
-                border-radius: 20px;
-                max-width: 95%;
+            h1 {
+                font-size: 1.8rem;
             }
 
-            .title h1 {
-                font-size: 2rem;
-            }
-
-            .wish-card {
-                padding: 1.5rem;
-                border-radius: 15px;
-            }
-
-            .wish-card p {
-                font-size: 1rem;
-            }
-
-            .flip-card {
-                width: 200px;
-                height: 200px;
-            }
-
-            .flip-card-front, .flip-card-back {
-                font-size: 2.5rem;
+            .section {
+                padding: 20px;
             }
 
             .memory-game {
@@ -559,33 +274,18 @@
             .game-card {
                 width: 50px;
                 height: 50px;
-                font-size: 1.5rem;
-            }
-
-            button {
-                padding: 0.6rem 1.2rem;
-                font-size: 0.9rem;
+                font-size: 1.2rem;
             }
         }
 
         @media (max-width: 480px) {
-            .container {
-                padding: 1.5rem;
-                border-radius: 15px;
-            }
-
-            .title h1 {
+            h1 {
                 font-size: 1.5rem;
             }
 
-            .wish-card {
-                padding: 1rem;
-                border-radius: 12px;
-            }
-
-            .wish-card p {
-                font-size: 0.95rem;
-                line-height: 1.6;
+            .section {
+                padding: 15px;
+                margin: 15px 0;
             }
 
             .flip-card {
@@ -594,7 +294,7 @@
             }
 
             .flip-card-front, .flip-card-back {
-                font-size: 2rem;
+                font-size: 3rem;
             }
 
             .memory-game {
@@ -605,167 +305,125 @@
             .game-card {
                 width: 45px;
                 height: 45px;
-                font-size: 1.2rem;
-            }
-
-            .floating-element {
-                font-size: 1.5rem;
+                font-size: 1rem;
             }
         }
 
-        /* Starfield animation */
-        .star {
-            position: absolute;
-            width: 2px;
-            height: 2px;
-            background: white;
-            border-radius: 50%;
-            pointer-events: none;
-        }
-
-        /* End section */
-        .end-section {
+        .final-section {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 20px;
-            padding: 2rem;
-            margin: 2rem 0;
-            text-align: center;
             color: white;
-            animation: endFadeIn 0.8s ease-out 2s both;
+            text-align: center;
         }
 
-        @keyframes endFadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .final-section h2 {
+            color: white;
         }
 
-        .end-section p {
+        .final-section p {
             font-size: 1.2rem;
-            line-height: 1.8;
+            margin: 15px 0;
         }
     </style>
 </head>
 <body>
-    <!-- Floating emojis container -->
     <div class="floating-container" id="floatingContainer"></div>
 
-    <!-- Scrollable Page Wrapper -->
-    <div class="page-wrapper">
+    <div class="content-wrapper">
         <!-- Title Section -->
-        <div class="container">
-            <div class="title">
-                <h1>Happy Birthday, Pinkey Didi! 👑✨</h1>
-                <p>A special day for a special sister 💕</p>
-            </div>
+        <div class="section">
+            <h1>🎉 Happy Birthday Pinkey Didi! 👑✨</h1>
+            <p class="subtitle">A special day for a special sister 💕</p>
         </div>
 
-        <!-- Wish Card -->
-        <div class="container">
-            <div class="wish-card">
-                <p>Happy Birthday to the most amazing sister in the world, Pinkey Didi! 🌸 You bring so much joy, warmth, and laughter into my life every single day. Thank you for always being my guide, my protector, and my favorite person to share moments with. May your day be filled with endless smiles, sweet surprises, and all the happiness you deserve. 🎉</p>
-            </div>
+        <!-- Wish Section -->
+        <div class="section">
+            <h2>✨ A Special Message ✨</h2>
+            <p class="wish-text">Happy Birthday to the most amazing sister in the world, Pinkey Didi! 🌸 You bring so much joy, warmth, and laughter into my life every single day. Thank you for always being my guide, my protector, and my favorite person to share moments with. May your day be filled with endless smiles, sweet surprises, and all the happiness you deserve. 🎉</p>
         </div>
 
-        <!-- Photo/Card Section -->
-        <div class="container">
-            <div class="photo-section">
-                <h3>Click to reveal a special moment! ✨</h3>
-                <div class="flip-card">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            🎁
-                        </div>
-                        <div class="flip-card-back">
-                            💕
-                        </div>
-                    </div>
+        <!-- Flip Card Section -->
+        <div class="section">
+            <h2>🎁 Click to Reveal 🎁</h2>
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">🎁</div>
+                    <div class="flip-card-back">💕</div>
                 </div>
             </div>
         </div>
 
-        <!-- Music Player Section -->
-        <div class="container">
-            <div class="music-section">
-                <h3>🎵 Birthday Song 🎵</h3>
-                <div class="music-controls">
-                    <button id="playBtn" onclick="playBirthdaySong()">▶ Play Song</button>
-                    <button id="stopBtn" onclick="stopBirthdaySong()">⏹ Stop</button>
-                </div>
-                <div class="status-text" id="statusText">Click play to hear the birthday song! 🎶</div>
+        <!-- Music Section -->
+        <div class="section">
+            <h2>🎵 Birthday Song 🎵</h2>
+            <div class="button-group">
+                <button onclick="playBirthdaySong()">▶ Play Song</button>
+                <button onclick="stopBirthdaySong()">⏹ Stop</button>
             </div>
+            <div class="status-text" id="statusText">Click play to hear the birthday song! 🎶</div>
         </div>
 
         <!-- Party Popper Section -->
-        <div class="container">
-            <div class="party-popper-section">
-                <h3>🎉 Party Time! 🎉</h3>
-                <p style="margin-bottom: 1rem; color: #666;">Click the button below to launch party poppers and confetti!</p>
-                <button class="celebrate-btn" onclick="celebrateWithConfetti()">🎊 Party Popper! 🎊</button>
-                <p style="margin-top: 1rem; font-size: 0.9rem; color: #666;">💡 Tip: You can also press SPACEBAR anytime for instant celebration!</p>
+        <div class="section">
+            <h2>🎊 Party Time! 🎊</h2>
+            <p style="text-align: center; color: #666; margin-bottom: 15px;">Click the buttons below to launch celebration!</p>
+            <div class="button-group">
+                <button onclick="celebrateWithConfetti()">🎉 Party Popper!</button>
+                <button onclick="launchMassiveConfetti()">🚀 Massive Celebration!</button>
             </div>
-        </div>
-
-        <!-- Fun Facts Section -->
-        <div class="container">
-            <div class="fun-facts">
-                <h3>✨ Fun Birthday Facts ✨</h3>
-                <div class="fun-fact-item">🎂 Did you know? Birthday cakes have been used since ancient times!</div>
-                <div class="fun-fact-item">🎈 Balloons were invented in 1824 by Michael Faraday!</div>
-                <div class="fun-fact-item">🎁 The tradition of gift-giving dates back to ancient Rome!</div>
-                <div class="fun-fact-item">🎉 Birthday songs were first recorded in the 1800s!</div>
-                <div class="fun-fact-item">👑 You share your birthday with millions of people worldwide!</div>
-            </div>
+            <p style="text-align: center; font-size: 0.9rem; color: #666; margin-top: 10px;">💡 Tip: Press SPACEBAR anytime for confetti!</p>
         </div>
 
         <!-- Countdown Section -->
-        <div class="container">
-            <div class="countdown-section">
-                <h3>⏳ Time Since Midnight ⏳</h3>
-                <div class="countdown-display" id="countdownDisplay">Calculating...</div>
-                <p style="margin-top: 1rem; font-size: 0.9rem;">How many hours have you been alive today?</p>
+        <div class="section">
+            <h2>⏳ Time Since Midnight ⏳</h2>
+            <div class="countdown-timer" id="countdown">00:00:00</div>
+            <p style="text-align: center; color: #666;">How many hours have you been alive today?</p>
+        </div>
+
+        <!-- Fun Facts Section -->
+        <div class="section">
+            <h2>✨ Fun Birthday Facts ✨</h2>
+            <div class="fun-facts">
+                <div class="fact-item">🎂 Birthday cakes have been used since ancient times!</div>
+                <div class="fact-item">🎈 Balloons were invented in 1824!</div>
+                <div class="fact-item">🎁 Gift-giving tradition dates back to ancient Rome!</div>
+                <div class="fact-item">🎉 Birthday songs were first recorded in the 1800s!</div>
+                <div class="fact-item">👑 You share your birthday with millions of people!</div>
             </div>
         </div>
 
-        <!-- Game Section -->
-        <div class="container">
-            <div class="game-section">
-                <h3>🎮 Birthday Memory Game 🎮</h3>
-                <p style="margin-bottom: 1rem; font-size: 0.9rem;">Match the emojis! Click pairs to find matching birthday items.</p>
-                <div class="memory-game" id="memoryGame"></div>
-                <button onclick="resetMemoryGame()" style="margin-top: 1rem; background: rgba(255, 255, 255, 0.2); border: 2px solid white;">🔄 Reset Game</button>
+        <!-- Memory Game Section -->
+        <div class="section">
+            <h2>🎮 Birthday Memory Game 🎮</h2>
+            <p style="text-align: center; color: #666; margin-bottom: 15px;">Match the pairs!</p>
+            <div class="memory-game" id="memoryGame"></div>
+            <div style="text-align: center;">
+                <button onclick="resetMemoryGame()">🔄 Reset Game</button>
             </div>
         </div>
 
         <!-- Messages Section -->
-        <div class="container">
-            <div class="messages-section">
-                <h3>💌 Special Messages 💌</h3>
-                <div class="message-item">✨ You make every day brighter with your presence!</div>
-                <div class="message-item">🌟 Your smile is contagious and your heart is pure gold!</div>
-                <div class="message-item">💖 Thank you for all the memories we've shared together!</div>
-                <div class="message-item">🎯 Here's to another year of adventures and laughter!</div>
-                <div class="message-item">🌈 May all your dreams come true this year!</div>
+        <div class="section">
+            <h2>💌 Special Messages 💌</h2>
+            <div class="messages-box">
+                <div class="message">✨ You make every day brighter!</div>
+                <div class="message">🌟 Your smile is absolutely contagious!</div>
+                <div class="message">💖 Thank you for all the memories!</div>
+                <div class="message">🎯 Here's to another year of adventures!</div>
+                <div class="message">🌈 May all your dreams come true!</div>
             </div>
         </div>
 
-        <!-- End Section -->
-        <div class="container">
-            <div class="end-section">
-                <h2>🎂 Have the Most Amazing Birthday! 🎂</h2>
-                <p style="margin-top: 1rem;">Celebrating you today and every day! 🥳💕✨</p>
-                <button onclick="launchMassiveConfetti()" style="margin-top: 1.5rem; background: rgba(255, 255, 255, 0.3); border: 2px solid white;">🚀 Final Celebration 🚀</button>
-            </div>
+        <!-- Final Section -->
+        <div class="section final-section">
+            <h2>🎂 Have the Most Amazing Birthday! 🎂</h2>
+            <p>Celebrating you today and every day! 🥳💕✨</p>
+            <button onclick="launchMassiveConfetti()" style="margin-top: 15px; background: rgba(255, 255, 255, 0.3); border: 2px solid white;">🚀 Grand Finale 🚀</button>
         </div>
     </div>
 
     <script>
-        // Floating Emojis Configuration
+        // Floating Emojis
         const emojis = ['🎂', '🎈', '✨', '💖', '🎁', '🎉'];
         
         function createFloatingEmoji() {
@@ -773,24 +431,19 @@
             const emoji = emojis[Math.floor(Math.random() * emojis.length)];
             const element = document.createElement('div');
             element.className = 'floating-element';
-            if (emoji === '💖') element.classList.add('floating-heart');
             element.textContent = emoji;
             element.style.left = Math.random() * 100 + '%';
             element.style.animationDuration = (6 + Math.random() * 4) + 's';
             element.style.animationDelay = Math.random() * 0.5 + 's';
             
             container.appendChild(element);
-            
             setTimeout(() => element.remove(), 12000);
         }
 
-        // Create emojis continuously
         setInterval(createFloatingEmoji, 800);
 
-        // Birthday Song using Web Audio API
+        // Birthday Song
         let audioContext;
-        let oscillator;
-        let gainNode;
 
         function initAudioContext() {
             if (!audioContext) {
@@ -806,7 +459,6 @@
                 
                 osc.connect(gain);
                 gain.connect(audioContext.destination);
-                
                 osc.frequency.value = frequency;
                 osc.type = 'sine';
                 
@@ -822,56 +474,35 @@
 
         async function playBirthdaySong() {
             const statusText = document.getElementById('statusText');
-            const playBtn = document.getElementById('playBtn');
-            
-            playBtn.disabled = true;
             statusText.textContent = '🎵 Playing...';
 
-            // Happy Birthday melody in frequencies
             const notes = [
-                { freq: 262, duration: 0.3 }, // C
-                { freq: 262, duration: 0.3 }, // C
-                { freq: 294, duration: 0.6 }, // D
-                { freq: 262, duration: 0.6 }, // C
-                { freq: 330, duration: 0.6 }, // E
-                { freq: 294, duration: 0.9 }, // D
-                { freq: 262, duration: 0.3 }, // C
-                { freq: 262, duration: 0.3 }, // C
-                { freq: 294, duration: 0.6 }, // D
-                { freq: 262, duration: 0.6 }, // C
-                { freq: 350, duration: 0.6 }, // F
-                { freq: 330, duration: 0.9 }, // E
-                { freq: 262, duration: 0.3 }, // C
-                { freq: 262, duration: 0.3 }, // C
-                { freq: 523, duration: 0.6 }, // C (high)
-                { freq: 392, duration: 0.6 }, // G
-                { freq: 350, duration: 0.6 }, // F
-                { freq: 330, duration: 0.6 }, // E
-                { freq: 294, duration: 0.6 }, // D
-                { freq: 294, duration: 0.6 }, // D
-                { freq: 294, duration: 0.6 }, // D
-                { freq: 330, duration: 0.6 }, // E
-                { freq: 294, duration: 0.9 }, // D
+                { freq: 262, duration: 0.3 }, { freq: 262, duration: 0.3 }, { freq: 294, duration: 0.6 },
+                { freq: 262, duration: 0.6 }, { freq: 330, duration: 0.6 }, { freq: 294, duration: 0.9 },
+                { freq: 262, duration: 0.3 }, { freq: 262, duration: 0.3 }, { freq: 294, duration: 0.6 },
+                { freq: 262, duration: 0.6 }, { freq: 350, duration: 0.6 }, { freq: 330, duration: 0.9 },
+                { freq: 262, duration: 0.3 }, { freq: 262, duration: 0.3 }, { freq: 523, duration: 0.6 },
+                { freq: 392, duration: 0.6 }, { freq: 350, duration: 0.6 }, { freq: 330, duration: 0.6 },
+                { freq: 294, duration: 0.6 }, { freq: 294, duration: 0.6 }, { freq: 294, duration: 0.6 },
+                { freq: 330, duration: 0.6 }, { freq: 294, duration: 0.9 }
             ];
 
             for (const note of notes) {
                 await playTone(note.freq, note.duration);
             }
 
-            playBtn.disabled = false;
-            statusText.textContent = '🎶 Song finished! Click play again!';
+            statusText.textContent = '🎶 Song finished!';
         }
 
         function stopBirthdaySong() {
-            if (audioContext && audioContext.state !== 'closed') {
+            if (audioContext) {
                 audioContext.close();
                 audioContext = null;
             }
-            document.getElementById('statusText').textContent = '⏸ Song stopped. Click play to hear again!';
-            document.getElementById('playBtn').disabled = false;
+            document.getElementById('statusText').textContent = 'Song stopped!';
         }
 
-        // Confetti Effects
+        // Confetti
         function celebrateWithConfetti() {
             if (typeof confetti !== 'undefined') {
                 confetti({
@@ -884,36 +515,20 @@
 
         function launchMassiveConfetti() {
             if (typeof confetti !== 'undefined') {
-                confetti({
-                    particleCount: 200,
-                    spread: 90,
-                    origin: { y: 0.5 }
-                });
+                confetti({ particleCount: 200, spread: 90, origin: { y: 0.5 } });
                 setTimeout(() => {
-                    confetti({
-                        particleCount: 150,
-                        spread: 100,
-                        origin: { x: 0, y: 0.5 }
-                    });
+                    confetti({ particleCount: 150, spread: 100, origin: { x: 0, y: 0.5 } });
                 }, 300);
                 setTimeout(() => {
-                    confetti({
-                        particleCount: 150,
-                        spread: 100,
-                        origin: { x: 1, y: 0.5 }
-                    });
+                    confetti({ particleCount: 150, spread: 100, origin: { x: 1, y: 0.5 } });
                 }, 600);
             }
         }
 
-        // Trigger confetti on page load
         window.addEventListener('load', () => {
-            setTimeout(() => {
-                celebrateWithConfetti();
-            }, 1000);
+            setTimeout(celebrateWithConfetti, 1000);
         });
 
-        // Allow spacebar to celebrate
         document.addEventListener('keydown', (e) => {
             if (e.code === 'Space') {
                 e.preventDefault();
@@ -924,12 +539,10 @@
         // Countdown Timer
         function updateCountdown() {
             const now = new Date();
-            const hours = now.getHours();
-            const minutes = now.getMinutes();
-            const seconds = now.getSeconds();
-            
-            const countdownDisplay = document.getElementById('countdownDisplay');
-            countdownDisplay.textContent = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            document.getElementById('countdown').textContent = `${hours}:${minutes}:${seconds}`;
         }
 
         updateCountdown();
@@ -968,7 +581,7 @@
                     flipped = [];
                     
                     if (matched.length === gameCards.length) {
-                        setTimeout(() => alert('🎉 You won! You\'re amazing!'), 500);
+                        setTimeout(() => alert('🎉 You won! Amazing!'), 500);
                     }
                 } else {
                     setTimeout(() => {
@@ -987,8 +600,7 @@
             initMemoryGame();
         }
 
-        // Initialize game on load
-        window.addEventListener('load', initMemoryGame);
+        initMemoryGame();
     </script>
 </body>
 </html>
