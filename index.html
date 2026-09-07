@@ -197,15 +197,6 @@
             transform: translateX(5px);
         }
 
-        .countdown-timer {
-            text-align: center;
-            font-size: 2rem;
-            font-weight: bold;
-            color: #c44569;
-            font-family: 'Courier New', monospace;
-            margin: 20px 0;
-        }
-
         .memory-game {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -373,13 +364,6 @@
             <p style="text-align: center; font-size: 0.9rem; color: #666; margin-top: 10px;">💡 Tip: Press SPACEBAR anytime for confetti!</p>
         </div>
 
-        <!-- Countdown Section -->
-        <div class="section">
-            <h2>⏳ Time Since Midnight ⏳</h2>
-            <div class="countdown-timer" id="countdown">00:00:00</div>
-            <p style="text-align: center; color: #666;">How many hours have you been alive today?</p>
-        </div>
-
         <!-- Fun Facts Section -->
         <div class="section">
             <h2>✨ Fun Birthday Facts ✨</h2>
@@ -535,18 +519,6 @@
                 celebrateWithConfetti();
             }
         });
-
-        // Countdown Timer
-        function updateCountdown() {
-            const now = new Date();
-            const hours = String(now.getHours()).padStart(2, '0');
-            const minutes = String(now.getMinutes()).padStart(2, '0');
-            const seconds = String(now.getSeconds()).padStart(2, '0');
-            document.getElementById('countdown').textContent = `${hours}:${minutes}:${seconds}`;
-        }
-
-        updateCountdown();
-        setInterval(updateCountdown, 1000);
 
         // Memory Game
         const gameEmojis = ['🎂', '🎈', '✨', '💖', '🎁', '🎉', '🎂', '🎈', '✨', '💖', '🎁', '🎉'];
