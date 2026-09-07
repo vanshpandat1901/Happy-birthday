@@ -12,14 +12,14 @@
             box-sizing: border-box;
         }
 
+        html, body {
+            height: 100%;
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #ffd6e8 0%, #c2b3f3 50%, #f0e6ff 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
+            overflow-x: hidden;
             position: relative;
         }
 
@@ -74,18 +74,26 @@
             }
         }
 
-        /* Main container */
-        .container {
+        /* Scrollable wrapper */
+        .page-wrapper {
             position: relative;
             z-index: 10;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding: 2rem 0;
+        }
+
+        /* Main container sections */
+        .container {
             background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(10px);
             border-radius: 30px;
             padding: 3rem;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-            max-width: 800px;
+            max-width: 900px;
             width: 90%;
-            margin: auto;
+            margin: 2rem auto;
             animation: slideIn 0.8s ease-out;
         }
 
@@ -222,7 +230,7 @@
             align-items: center;
             justify-content: center;
             font-weight: bold;
-            font-size: 2rem;
+            font-size: 3rem;
         }
 
         .flip-card-front {
@@ -272,6 +280,169 @@
             flex-wrap: wrap;
         }
 
+        /* Party Popper Styles */
+        .party-popper-section {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+            animation: partyFadeIn 0.8s ease-out 1s both;
+        }
+
+        @keyframes partyFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .party-popper-section h3 {
+            color: #c44569;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        /* Fun Facts Section */
+        .fun-facts {
+            background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            animation: factsFadeIn 0.8s ease-out 1.2s both;
+        }
+
+        @keyframes factsFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fun-facts h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            text-align: center;
+            font-size: 1.3rem;
+        }
+
+        .fun-fact-item {
+            background: rgba(255, 255, 255, 0.6);
+            padding: 1rem;
+            margin: 0.5rem 0;
+            border-radius: 15px;
+            text-align: center;
+            font-weight: 500;
+            color: #333;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .fun-fact-item:hover {
+            background: rgba(255, 255, 255, 0.9);
+            transform: translateX(5px);
+        }
+
+        /* Game Section */
+        .game-section {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+            color: white;
+            animation: gameFadeIn 0.8s ease-out 1.4s both;
+        }
+
+        @keyframes gameFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .game-section h3 {
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .memory-game {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            max-width: 300px;
+            margin: 1rem auto;
+        }
+
+        .game-card {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid white;
+            border-radius: 10px;
+            width: 60px;
+            height: 60px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .game-card:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: scale(1.1);
+        }
+
+        .game-card.matched {
+            background: rgba(0, 255, 0, 0.3);
+        }
+
+        /* Countdown Section */
+        .countdown-section {
+            background: linear-gradient(135deg, #ffd89b 0%, #19547b 100%);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+            color: white;
+            animation: countdownFadeIn 0.8s ease-out 1.6s both;
+        }
+
+        @keyframes countdownFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .countdown-section h3 {
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .countdown-display {
+            font-size: 2rem;
+            font-weight: bold;
+            font-family: 'Courier New', monospace;
+        }
+
+        /* Button Styles */
         button {
             background: linear-gradient(135deg, #ff6b9d 0%, #c44569 100%);
             color: white;
@@ -308,11 +479,55 @@
             box-shadow: 0 8px 25px rgba(255, 107, 157, 0.5);
         }
 
+        .status-text {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 0.5rem;
+        }
+
+        /* Messages Section */
+        .messages-section {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+            animation: messageFadeIn 0.8s ease-out 1.8s both;
+        }
+
+        @keyframes messageFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .messages-section h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .message-item {
+            background: rgba(255, 255, 255, 0.7);
+            padding: 1rem;
+            margin: 0.5rem 0;
+            border-radius: 10px;
+            border-left: 4px solid #ff6b9d;
+            text-align: left;
+            color: #333;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .container {
                 padding: 2rem;
                 border-radius: 20px;
+                max-width: 95%;
             }
 
             .title h1 {
@@ -334,6 +549,16 @@
             }
 
             .flip-card-front, .flip-card-back {
+                font-size: 2.5rem;
+            }
+
+            .memory-game {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .game-card {
+                width: 50px;
+                height: 50px;
                 font-size: 1.5rem;
             }
 
@@ -368,30 +593,61 @@
                 height: 150px;
             }
 
+            .flip-card-front, .flip-card-back {
+                font-size: 2rem;
+            }
+
+            .memory-game {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 8px;
+            }
+
+            .game-card {
+                width: 45px;
+                height: 45px;
+                font-size: 1.2rem;
+            }
+
             .floating-element {
                 font-size: 1.5rem;
             }
         }
 
-        /* Loading spinner for audio */
-        .audio-loading {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 3px solid rgba(255, 255, 255, 0.3);
+        /* Starfield animation */
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
             border-radius: 50%;
-            border-top-color: white;
-            animation: spin 0.8s linear infinite;
+            pointer-events: none;
         }
 
-        @keyframes spin {
-            to { transform: rotate(360deg); }
+        /* End section */
+        .end-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+            color: white;
+            animation: endFadeIn 0.8s ease-out 2s both;
         }
 
-        .status-text {
-            font-size: 0.9rem;
-            color: #666;
-            margin-top: 0.5rem;
+        @keyframes endFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .end-section p {
+            font-size: 1.2rem;
+            line-height: 1.8;
         }
     </style>
 </head>
@@ -399,47 +655,112 @@
     <!-- Floating emojis container -->
     <div class="floating-container" id="floatingContainer"></div>
 
-    <!-- Main Content -->
-    <div class="container">
+    <!-- Scrollable Page Wrapper -->
+    <div class="page-wrapper">
         <!-- Title Section -->
-        <div class="title">
-            <h1>Happy Birthday, Pinkey Didi! 👑✨</h1>
-            <p>A special day for a special sister 💕</p>
+        <div class="container">
+            <div class="title">
+                <h1>Happy Birthday, Pinkey Didi! 👑✨</h1>
+                <p>A special day for a special sister 💕</p>
+            </div>
         </div>
 
         <!-- Wish Card -->
-        <div class="wish-card">
-            <p>Happy Birthday to the most amazing sister in the world, Pinkey Didi! 🌸 You bring so much joy, warmth, and laughter into my life every single day. Thank you for always being my guide, my protector, and my favorite person to share moments with. May your day be filled with endless smiles, sweet surprises, and all the happiness you deserve. Love you always, Didi! 💕🎉</p>
+        <div class="container">
+            <div class="wish-card">
+                <p>Happy Birthday to the most amazing sister in the world, Pinkey Didi! 🌸 You bring so much joy, warmth, and laughter into my life every single day. Thank you for always being my guide, my protector, and my favorite person to share moments with. May your day be filled with endless smiles, sweet surprises, and all the happiness you deserve. 🎉</p>
+            </div>
         </div>
 
         <!-- Photo/Card Section -->
-        <div class="photo-section">
-            <h3>Click to reveal a special moment! ✨</h3>
-            <div class="flip-card">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        🎁
-                    </div>
-                    <div class="flip-card-back">
-                        💕
+        <div class="container">
+            <div class="photo-section">
+                <h3>Click to reveal a special moment! ✨</h3>
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            🎁
+                        </div>
+                        <div class="flip-card-back">
+                            💕
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- Music Player Section -->
-        <div class="music-section">
-            <h3>🎵 Birthday Song 🎵</h3>
-            <div class="music-controls">
-                <button id="playBtn" onclick="playBirthdaySong()">▶ Play Song</button>
-                <button id="stopBtn" onclick="stopBirthdaySong()">⏹ Stop</button>
+        <div class="container">
+            <div class="music-section">
+                <h3>🎵 Birthday Song 🎵</h3>
+                <div class="music-controls">
+                    <button id="playBtn" onclick="playBirthdaySong()">▶ Play Song</button>
+                    <button id="stopBtn" onclick="stopBirthdaySong()">⏹ Stop</button>
+                </div>
+                <div class="status-text" id="statusText">Click play to hear the birthday song! 🎶</div>
             </div>
-            <div class="status-text" id="statusText">Click play to hear the birthday song! 🎶</div>
         </div>
 
-        <!-- Celebrate Button -->
-        <div style="text-align: center; margin-top: 2rem;">
-            <button class="celebrate-btn" onclick="celebrateWithConfetti()">🎉 Celebrate! 🎉</button>
+        <!-- Party Popper Section -->
+        <div class="container">
+            <div class="party-popper-section">
+                <h3>🎉 Party Time! 🎉</h3>
+                <p style="margin-bottom: 1rem; color: #666;">Click the button below to launch party poppers and confetti!</p>
+                <button class="celebrate-btn" onclick="celebrateWithConfetti()">🎊 Party Popper! 🎊</button>
+                <p style="margin-top: 1rem; font-size: 0.9rem; color: #666;">💡 Tip: You can also press SPACEBAR anytime for instant celebration!</p>
+            </div>
+        </div>
+
+        <!-- Fun Facts Section -->
+        <div class="container">
+            <div class="fun-facts">
+                <h3>✨ Fun Birthday Facts ✨</h3>
+                <div class="fun-fact-item">🎂 Did you know? Birthday cakes have been used since ancient times!</div>
+                <div class="fun-fact-item">🎈 Balloons were invented in 1824 by Michael Faraday!</div>
+                <div class="fun-fact-item">🎁 The tradition of gift-giving dates back to ancient Rome!</div>
+                <div class="fun-fact-item">🎉 Birthday songs were first recorded in the 1800s!</div>
+                <div class="fun-fact-item">👑 You share your birthday with millions of people worldwide!</div>
+            </div>
+        </div>
+
+        <!-- Countdown Section -->
+        <div class="container">
+            <div class="countdown-section">
+                <h3>⏳ Time Since Midnight ⏳</h3>
+                <div class="countdown-display" id="countdownDisplay">Calculating...</div>
+                <p style="margin-top: 1rem; font-size: 0.9rem;">How many hours have you been alive today?</p>
+            </div>
+        </div>
+
+        <!-- Game Section -->
+        <div class="container">
+            <div class="game-section">
+                <h3>🎮 Birthday Memory Game 🎮</h3>
+                <p style="margin-bottom: 1rem; font-size: 0.9rem;">Match the emojis! Click pairs to find matching birthday items.</p>
+                <div class="memory-game" id="memoryGame"></div>
+                <button onclick="resetMemoryGame()" style="margin-top: 1rem; background: rgba(255, 255, 255, 0.2); border: 2px solid white;">🔄 Reset Game</button>
+            </div>
+        </div>
+
+        <!-- Messages Section -->
+        <div class="container">
+            <div class="messages-section">
+                <h3>💌 Special Messages 💌</h3>
+                <div class="message-item">✨ You make every day brighter with your presence!</div>
+                <div class="message-item">🌟 Your smile is contagious and your heart is pure gold!</div>
+                <div class="message-item">💖 Thank you for all the memories we've shared together!</div>
+                <div class="message-item">🎯 Here's to another year of adventures and laughter!</div>
+                <div class="message-item">🌈 May all your dreams come true this year!</div>
+            </div>
+        </div>
+
+        <!-- End Section -->
+        <div class="container">
+            <div class="end-section">
+                <h2>🎂 Have the Most Amazing Birthday! 🎂</h2>
+                <p style="margin-top: 1rem;">Celebrating you today and every day! 🥳💕✨</p>
+                <button onclick="launchMassiveConfetti()" style="margin-top: 1.5rem; background: rgba(255, 255, 255, 0.3); border: 2px solid white;">🚀 Final Celebration 🚀</button>
+            </div>
         </div>
     </div>
 
@@ -550,7 +871,7 @@
             document.getElementById('playBtn').disabled = false;
         }
 
-        // Confetti Effect
+        // Confetti Effects
         function celebrateWithConfetti() {
             if (typeof confetti !== 'undefined') {
                 confetti({
@@ -561,11 +882,35 @@
             }
         }
 
+        function launchMassiveConfetti() {
+            if (typeof confetti !== 'undefined') {
+                confetti({
+                    particleCount: 200,
+                    spread: 90,
+                    origin: { y: 0.5 }
+                });
+                setTimeout(() => {
+                    confetti({
+                        particleCount: 150,
+                        spread: 100,
+                        origin: { x: 0, y: 0.5 }
+                    });
+                }, 300);
+                setTimeout(() => {
+                    confetti({
+                        particleCount: 150,
+                        spread: 100,
+                        origin: { x: 1, y: 0.5 }
+                    });
+                }, 600);
+            }
+        }
+
         // Trigger confetti on page load
         window.addEventListener('load', () => {
             setTimeout(() => {
                 celebrateWithConfetti();
-            }, 500);
+            }, 1000);
         });
 
         // Allow spacebar to celebrate
@@ -575,6 +920,75 @@
                 celebrateWithConfetti();
             }
         });
+
+        // Countdown Timer
+        function updateCountdown() {
+            const now = new Date();
+            const hours = now.getHours();
+            const minutes = now.getMinutes();
+            const seconds = now.getSeconds();
+            
+            const countdownDisplay = document.getElementById('countdownDisplay');
+            countdownDisplay.textContent = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        // Memory Game
+        const gameEmojis = ['🎂', '🎈', '✨', '💖', '🎁', '🎉', '🎂', '🎈', '✨', '💖', '🎁', '🎉'];
+        let gameCards = [...gameEmojis].sort(() => Math.random() - 0.5);
+        let flipped = [];
+        let matched = [];
+
+        function initMemoryGame() {
+            const gameContainer = document.getElementById('memoryGame');
+            gameContainer.innerHTML = '';
+            gameCards.forEach((emoji, index) => {
+                const card = document.createElement('div');
+                card.className = 'game-card';
+                card.textContent = '?';
+                card.onclick = () => flipCard(card, index);
+                gameContainer.appendChild(card);
+            });
+        }
+
+        function flipCard(card, index) {
+            if (flipped.includes(index) || matched.includes(index)) return;
+            
+            card.textContent = gameCards[index];
+            flipped.push(index);
+
+            if (flipped.length === 2) {
+                const [first, second] = flipped;
+                if (gameCards[first] === gameCards[second]) {
+                    matched.push(first, second);
+                    document.querySelectorAll('.game-card')[first].classList.add('matched');
+                    document.querySelectorAll('.game-card')[second].classList.add('matched');
+                    flipped = [];
+                    
+                    if (matched.length === gameCards.length) {
+                        setTimeout(() => alert('🎉 You won! You\'re amazing!'), 500);
+                    }
+                } else {
+                    setTimeout(() => {
+                        document.querySelectorAll('.game-card')[first].textContent = '?';
+                        document.querySelectorAll('.game-card')[second].textContent = '?';
+                        flipped = [];
+                    }, 1000);
+                }
+            }
+        }
+
+        function resetMemoryGame() {
+            gameCards = [...gameEmojis].sort(() => Math.random() - 0.5);
+            flipped = [];
+            matched = [];
+            initMemoryGame();
+        }
+
+        // Initialize game on load
+        window.addEventListener('load', initMemoryGame);
     </script>
 </body>
 </html>
